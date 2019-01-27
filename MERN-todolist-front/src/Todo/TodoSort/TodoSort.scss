@@ -1,0 +1,33 @@
+.TodoSort{
+    // width: 100%;
+    padding: 10px 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    input{
+        display: none;
+    }
+
+    label{
+        color: dimgray;
+        margin-left: 30px;
+        cursor: pointer;
+
+        span{
+            visibility: hidden;
+            font-size: 20px;
+        }
+
+        &.active{
+            color: black;
+
+            span{
+                visibility: visible;
+                color: darkseagreen;
+            }
+
+        }
+    }
+}

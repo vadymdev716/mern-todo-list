@@ -1,0 +1,111 @@
+.TodoItem{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 30px 0 0 0;
+
+    .TodoItem__mainContainer{
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        background-color: cornsilk;
+        border-radius: 10px;
+
+        .TodoItem__marker{
+            width: 30px;
+            min-width: 30px;
+            height: 30px;
+            cursor: pointer;
+            flex-basis: 40px;
+
+            img {
+                padding-top: 10%;
+                padding-left: 10%;
+                width: 80%;
+                height: 80%;
+            }
+        }
+        .TodoItem__text{
+            padding: 10px 0 10px 20px;
+            font-size: 20px;
+            color: darkred;
+            display: flex;
+            flex-grow: 1;
+            border-radius: 0 5px 5px 0;
+            position: relative;
+
+            &.through{
+                text-decoration: line-through;
+
+                .TodoItem__doneLabel{
+                    color: darkseagreen;
+                    position: absolute;
+                    font-weight: bold;
+                    font-size: 16px;
+                    padding: 5px 20px;
+                    top: 7px;
+                    right: 20px;
+                    border: 1px solid darkseagreen;
+                    border-radius: 5px;
+                    transform: rotate(-10deg);
+                    display: block;
+                }
+            }
+            .TodoItem__doneLabel{
+                display: none;
+            }
+        }
+        .TodoItem__editInput{
+            flex-grow: 1;
+            border-radius: 0 5px 5px 0;
+            padding: 10px 0 10px 20px;
+            font-size: 20px;
+            color: darkred;
+            display: flex;
+        }
+        .TodoItem__date{
+            font-weight: 300;
+            font-style: italic;
+            min-width: 80px
+        }
+        .TodoItem__delete,
+        .TodoItem__edit{
+            min-width: 40px;
+            cursor: pointer;
+        }
+    }
+    .TodoItem__controls{
+        padding: 10px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        div{
+            cursor: pointer;
+            padding: 10px;
+            width: 30%;
+            border-radius: 5px;
+            box-shadow: 0 5px 5px rgba(0,0,0,.3);
+
+            &:active{
+                box-shadow: none;
+            }
+        }
+
+        .controls__done{
+            margin-right: 0 auto 0 30px;
+            background-color: darkseagreen;
+            &:active{
+                background-color: darkslategrey ;
+            }
+        }
+        .controls__remove{
+            margin: 0 30px 0 auto;
+            background-color: darkgray;
+            &:active{
+                background-color: dimgray;
+            }
+        }
+    }
+}

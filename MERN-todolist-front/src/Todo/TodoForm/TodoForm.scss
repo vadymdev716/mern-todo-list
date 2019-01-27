@@ -1,0 +1,48 @@
+.TodoForm{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 10px 10px;
+    position: relative;
+
+    .TodoForm__item{
+        padding: 20px 10px;
+    }
+    .TodoForm__label{
+        font-size: 20px;
+        color: dimgray;
+    }
+    .TodoForm__input{
+        border-radius: 5px;
+        font-size: 20px;
+    }
+    .TodoForm__actions{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-evenly;
+
+        div{
+            width: 35%;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 5px -3px rgba(0,0,0,.5);
+        }
+        .clearButton{
+            background-color: darkgray;
+            color: black;
+            &:active{
+                background-color: dimgray;
+                box-shadow: none;
+            }
+        }
+        .addButton{
+            background-color: darkseagreen;
+            color: black;
+            &:active{
+                background-color: darkslategrey ;
+                box-shadow: none;
+            }
+        }
+    }
+}
