@@ -15,5 +15,20 @@ export const Api = {
             data: JSON.stringify(data),
             method: 'post'
         });
+    },
+
+    deleteTodo: (path) => {
+        return axios(`${BASE_URL}${path}`,{
+            headers: {'Content-Type': 'application/json'},
+            method: 'delete'
+        });
+    },
+
+    updateTodo: (path, data) => {
+        return axios(`${BASE_URL}${path}`,{
+            headers: {'Content-Type': 'application/json'},
+            data: JSON.stringify(data),
+            method: 'put'
+        });
     }
 }

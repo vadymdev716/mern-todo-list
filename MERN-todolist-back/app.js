@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 })
@@ -30,7 +30,8 @@ app.use((error, req, res, next) => {
 });
 
 mongoose.connect(
-    `mongodb+srv://${mongoDB_User}:${mongoDB_Key}@cluster0-wijca.mongodb.net/todo-list-node?retryWrites=true`
+    // `mongodb+srv://${mongoDB_User}:${mongoDB_Key}@cluster0-wijca.mongodb.net/todo-list-node?retryWrites=true`
+    "mongodb://localhost:27017/todoList"
 )
     .then(result => {
         app.listen(8080);

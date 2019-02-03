@@ -21,6 +21,7 @@ class TodoItem extends Component<any, {}> {
         this.props.TodoStore.switchTodo(this.props.config._id)
     }
     removeHandler = () => {
+        console.log(this.props.config._id);
         this.props.TodoStore.removeTodo(this.props.config._id)
     }
     editHandler = () => {

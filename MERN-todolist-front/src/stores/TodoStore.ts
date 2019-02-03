@@ -67,33 +67,66 @@ class Todo {
         }
     }
 
-    // @action private removeTodo(id: number): void {
-    //     this.todoList = this.todoList.filter((item, i) => {
-    //         return item.id !== id
-    //     })
-    // }
+    @action private async removeTodo(id: string) {
+        try {
+            const resonse = await Api.deleteTodo(`/todo/${id}`)
+            
+            this.todoList = this.todoList.filter((item, i) => {
+                return item._id !== id
+            })
 
-    // @action private editTodoName (id: number, field: string): void {
-    //     this.todoList = this.todoList.map(item => {
-    //         if(item.id === id) {
-    //             return {
-    //                 ...item,
-    //                 title: field
-    //             }
-    //         } else return item
-    //     })
-    // }
+        } catch {
+            console.log('Delete todo failed')
+        }
 
-    // @action private switchTodo(id: number): void {
-    //     this.todoList = this.todoList.map(item => {
-    //         if(item.id === id) {
-    //             return {
-    //                 ...item,
-    //                 done: !item.done
-    //             }
-    //         } else return item
-    //     })
-    // }
+    }
+
+    @action private async editTodoName (id: string, field: string) {
+        const todoItem = this.todoList.find(item => item._id === id);
+        if (!todoItem) return;
+
+        try {
+            const response = Api.updateTodo(`/todo/${id}`, {
+                ...todoItem,
+                title: field
+            })
+
+            this.todoList = this.todoList.map(item => {
+                if(item._id === id) {
+                    return {
+                        ...item,
+                        title: field
+                    }
+                } else return item
+            })
+
+        } catch {
+            console.log('Could not update todo')
+        }
+    }
+
+    @action private async switchTodo(id: string) {
+        const todoItem = this.todoList.find(item => item._id === id);
+        if (!todoItem) return;
+        try {
+            const response = Api.updateTodo(`/todo/${id}`, {
+                ...todoItem,
+                done: !todoItem.done
+            })
+
+            this.todoList = this.todoList.map(item => {
+                if(item._id === id) {
+                    return {
+                        ...item,
+                        done: !item.done
+                    }
+                } else return item
+            })
+
+        } catch {
+            console.log('Could not update todo')
+        }
+    }
 
     @action private changeFilter(name: string): void {
         this.filter = name;
